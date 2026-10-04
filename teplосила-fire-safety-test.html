@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пожарная безопасность — Сервисный отдел | ООО «ТЕПЛОСИЛА»</title>
+<style>
+  :root {
+    --bg: #0d1b2a;
+    --bg2: #112234;
+    --bg3: #172d42;
+    --card: #1a3048;
+    --accent: #f47c20;
+    --accent2: #ffa040;
+    --blue: #2d6fa4;
+    --blue2: #3a87c8;
+    --text: #e8f0f8;
+    --muted: #8faec8;
+    --green: #27ae60;
+    --red: #c0392b;
+    --border: #2a4a6a;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: linear-gradient(135deg, #0a1520 0%, #112234 50%, #1a2f45 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 20px 24px;
+    text-align: center;
+  }
+  .header-logo {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .header h1 {
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .header h2 {
+    font-size: clamp(11px, 2.5vw, 14px);
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 6px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header-law {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #557799;
+  }
+
+  /* ===== DISCLAIMER ===== */
+  .disclaimer {
+    background: #1a1a00;
+    border: 1px solid #7a6000;
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin: 20px auto;
+    max-width: 740px;
+    font-size: 12px;
+    color: #ccb050;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .disclaimer-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* ===== SCREENS ===== */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ===== USER FORM ===== */
+  .form-wrap {
+    max-width: 520px;
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+  .form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+  }
+  .form-card h3 {
+    font-size: 18px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .form-card p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .form-group { margin-bottom: 16px; }
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .form-group label span { color: var(--accent); }
+  .form-group input {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .form-group input:focus { border-color: var(--blue2); }
+  .form-group input::placeholder { color: #4a6a88; }
+
+  .info-box {
+    background: var(--bg3);
+    border-left: 3px solid var(--blue2);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .info-box ul { padding-left: 18px; }
+  .info-box li { margin-bottom: 3px; }
+
+  /* ===== BUTTONS ===== */
+  .btn {
+    display: inline-block;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all .2s;
+    text-align: center;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #d96a10);
+    color: #fff;
+    width: 100%;
+  }
+  .btn-primary:hover { background: linear-gradient(135deg, var(--accent2), var(--accent)); transform: translateY(-1px); }
+  .btn-secondary {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-secondary:hover { border-color: var(--blue2); }
+
+  /* ===== QUIZ LAYOUT ===== */
+  .quiz-wrap {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* Progress */
+  .progress-bar-wrap {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .progress-text { font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .progress-track {
+    flex: 1;
+    height: 8px;
+    background: var(--bg3);
+    border-radius: 4px;
+    min-width: 100px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue2), var(--accent));
+    border-radius: 4px;
+    transition: width .4s ease;
+  }
+  .progress-num { font-size: 14px; font-weight: 700; color: var(--accent); white-space: nowrap; }
+
+  /* Block label */
+  .block-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  /* Question card */
+  .question-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+    margin-bottom: 16px;
+  }
+  .question-type-badge {
+    display: inline-block;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .question-type-badge.multi { border-color: var(--blue2); color: var(--blue2); }
+  .question-text {
+    font-size: clamp(15px, 3vw, 17px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  /* Answers */
+  .answers { display: flex; flex-direction: column; gap: 10px; }
+  .answer-btn {
+    background: var(--bg2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 16px;
+    color: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: all .15s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    line-height: 1.4;
+  }
+  .answer-btn:hover:not(:disabled) { border-color: var(--blue2); background: var(--bg3); }
+  .answer-btn .answer-mark {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .answer-btn.multi-answer .answer-mark { border-radius: 5px; }
+  .answer-btn.selected { border-color: var(--blue2); background: #0d2a42; }
+  .answer-btn.selected .answer-mark { background: var(--blue2); border-color: var(--blue2); color: #fff; }
+  .answer-btn.correct { border-color: var(--green) !important; background: #0d2a1a !important; }
+  .answer-btn.correct .answer-mark { background: var(--green); border-color: var(--green); color: #fff; }
+  .answer-btn.wrong { border-color: var(--red) !important; background: #2a0d0d !important; }
+  .answer-btn.wrong .answer-mark { background: var(--red); border-color: var(--red); color: #fff; }
+  .answer-btn:disabled { cursor: default; }
+
+  /* Check button */
+  .check-wrap { margin-top: 16px; }
+  .btn-check {
+    background: linear-gradient(135deg, var(--blue), #1a4f7a);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: all .2s;
+  }
+  .btn-check:hover:not(:disabled) { background: linear-gradient(135deg, var(--blue2), var(--blue)); }
+  .btn-check:disabled { opacity: 0.5; cursor: default; }
+
+  /* Explanation */
+  .explanation {
+    display: none;
+    margin-top: 14px;
+    background: #0a1a28;
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #b0cce0;
+  }
+  .explanation.show { display: block; }
+  .explanation .exp-title {
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .explanation .law-ref {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #557799;
+    font-style: italic;
+  }
+
+  /* Next button */
+  .btn-next {
+    margin-top: 14px;
+    background: linear-gradient(135deg, var(--accent), #d96a10);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: all .2s;
+    display: none;
+  }
+  .btn-next:hover { transform: translateY(-1px); }
+
+  /* ===== RESULT SCREEN ===== */
+  .result-wrap {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+
+  .result-hero {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .result-hero.pass { border-color: var(--green); }
+  .result-hero.fail { border-color: var(--red); }
+
+  .result-status {
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .result-status.pass { color: var(--green); }
+  .result-status.fail { color: var(--red); }
+
+  /* SVG Ring */
+  .ring-wrap {
+    width: 160px;
+    height: 160px;
+    margin: 20px auto 10px;
+    position: relative;
+  }
+  .ring-wrap svg { width: 160px; height: 160px; }
+  .ring-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .ring-pct { font-size: 32px; font-weight: 800; color: #fff; }
+  .ring-label { font-size: 11px; color: var(--muted); }
+
+  .result-name { font-size: 16px; color: var(--text); margin-bottom: 4px; }
+  .result-pos { font-size: 13px; color: var(--muted); }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .stat-num { font-size: 28px; font-weight: 800; }
+  .stat-num.correct { color: var(--green); }
+  .stat-num.wrong { color: var(--red); }
+  .stat-num.total { color: var(--blue2); }
+  .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* Errors section */
+  .errors-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 20px;
+    margin-bottom: 20px;
+  }
+  .errors-section h3 {
+    font-size: 16px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+  .error-item {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+  .error-item:last-child { border-bottom: none; }
+  .error-q { font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 6px; }
+  .error-your { font-size: 12px; color: var(--red); margin-bottom: 4px; }
+  .error-right { font-size: 12px; color: var(--green); margin-bottom: 6px; }
+  .error-exp { font-size: 12px; color: #8faec8; }
+  .error-law { font-size: 11px; color: #557799; font-style: italic; margin-top: 4px; }
+
+  /* Certificate notice */
+  .cert-notice {
+    background: #0d2a0d;
+    border: 1px solid #1e6a1e;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    font-size: 13px;
+    color: #80c880;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* Footer */
+  .result-footer {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    font-size: 11px;
+    color: #557799;
+    margin-bottom: 20px;
+    line-height: 1.8;
+  }
+
+  .btn-restart {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 13px 28px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all .2s;
+    margin-bottom: 12px;
+  }
+  .btn-restart:hover { border-color: var(--blue2); }
+
+  .btn-print {
+    background: linear-gradient(135deg, var(--blue), #1a4f7a);
+    border: none;
+    border-radius: 8px;
+    padding: 13px 28px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: all .2s;
+  }
+  .btn-print:hover { background: linear-gradient(135deg, var(--blue2), var(--blue)); }
+
+  @media (max-width: 480px) {
+    .stats-row { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat-num { font-size: 22px; }
+    .stat-lbl { font-size: 10px; }
+    .question-card { padding: 18px 14px; }
+    .answer-btn { font-size: 13px; padding: 11px 12px; }
+  }
+
+  /* ===== JOURNAL BLOCK ===== */
+  .journal-block {
+    background: #0a1a10;
+    border: 2px solid #1e5a30;
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    margin-bottom: 20px;
+  }
+  .journal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #50c878;
+    margin-bottom: 6px;
+  }
+  .journal-subtitle {
+    font-size: 11px;
+    color: #557799;
+    margin-bottom: 18px;
+  }
+  .journal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .journal-table tr { border-bottom: 1px solid #1e3a2a; }
+  .journal-table tr:last-child { border-bottom: none; }
+  .jt-label {
+    padding: 9px 12px 9px 0;
+    color: var(--muted);
+    width: 45%;
+    vertical-align: top;
+    font-size: 12px;
+  }
+  .jt-value {
+    padding: 9px 0;
+    color: var(--text);
+    font-weight: 500;
+    vertical-align: top;
+  }
+  .jt-result { font-weight: 700; font-size: 14px; }
+  .jt-result.pass { color: var(--green); }
+  .jt-result.fail { color: var(--red); }
+  .jt-sign { padding-top: 20px; padding-bottom: 8px; }
+  .sign-line {
+    display: inline-block;
+    width: 200px;
+    border-bottom: 1px solid #2a4a6a;
+    height: 18px;
+  }
+  .journal-note {
+    margin-top: 16px;
+    font-size: 11px;
+    color: #7a9a7a;
+    background: #0d1f0d;
+    border-radius: 6px;
+    padding: 10px 12px;
+    border-left: 3px solid #2a6a2a;
+    line-height: 1.6;
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .btn-restart, .btn-print, .btn-next, .btn-check, .progress-bar-wrap,
+    .errors-section, .result-footer, .cert-notice, .disclaimer,
+    #fail-notice { display: none !important; }
+    .result-hero, .stat-card { background: #f5f5f5; border: 1px solid #ccc; color: #000; }
+    .result-status.pass { color: #1a6a30 !important; }
+    .result-status.fail { color: #8a1a1a !important; }
+    .ring-pct { color: #000 !important; }
+    .ring-label { color: #555 !important; }
+    .res-name, .res-pos { color: #000 !important; }
+    .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .stat-num.correct { color: #1a6a30 !important; }
+    .stat-num.wrong { color: #8a1a1a !important; }
+    .stat-num.total { color: #1a3a6a !important; }
+    .stat-lbl { color: #444 !important; }
+    /* Journal print styles */
+    .journal-block {
+      background: #fff !important;
+      border: 2px solid #000 !important;
+      color: #000 !important;
+      page-break-inside: avoid;
+    }
+    .journal-title { color: #000 !important; }
+    .journal-subtitle { color: #444 !important; }
+    .journal-table { border: 1px solid #999; }
+    .journal-table tr { border-bottom: 1px solid #ccc; }
+    .jt-label { color: #444 !important; }
+    .jt-value { color: #000 !important; }
+    .jt-result.pass { color: #1a6a30 !important; }
+    .jt-result.fail { color: #8a1a1a !important; }
+    .sign-line { border-bottom: 1px solid #000 !important; width: 220px; }
+    .journal-note { background: #f5f5f5 !important; color: #444 !important; border-left: 3px solid #888 !important; }
+    .result-wrap { padding: 10px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo">ООО «ТЕПЛОСИЛА» · Сервисный отдел</div>
+  <h1>🔥 Пожарная безопасность</h1>
+  <h2>Проверка знаний по итогам совмещённого вводного и первичного противопожарного инструктажа</h2>
+  <div class="header-law">Приказ МЧС России №1120 от 16.12.2024 · Федеральный закон №69-ФЗ · Федеральный закон №123-ФЗ · ППР РФ №1479</div>
+</div>
+
+<!-- SCREEN: USER FORM -->
+<div id="screen-form" class="screen active">
+  <div class="disclaimer">
+    <div class="disclaimer-icon">⚠️</div>
+    <div>
+      <strong>Важно!</strong> Данный тест не заменяет практическую часть инструктажа (отработку навыков использования огнетушителя и порядка действий при эвакуации). Практическая часть проводится непосредственным руководителем отдельно. Результаты теста фиксируются в журнале противопожарного инструктажа ООО «ТЕПЛОСИЛА».
+    </div>
+  </div>
+
+  <div class="form-wrap">
+    <div class="form-card">
+      <h3>Идентификация работника</h3>
+      <p>Введите данные перед началом тестирования</p>
+
+      <div class="form-group">
+        <label>Фамилия и Имя <span>*</span></label>
+        <input type="text" id="inp-name" placeholder="Иванов Иван" autocomplete="name">
+      </div>
+      <div class="form-group">
+        <label>Отчество <span style="color:var(--muted)">(если есть)</span></label>
+        <input type="text" id="inp-patronymic" placeholder="Иванович">
+      </div>
+      <div class="form-group">
+        <label>Должность <span>*</span></label>
+        <input type="text" id="inp-position" placeholder="Инженер сервисного отдела">
+      </div>
+
+      <div class="info-box">
+        <ul>
+          <li>30 вопросов · 7 тематических блоков</li>
+          <li>Порог прохождения: <strong>70%</strong> правильных ответов (21 из 30)</li>
+          <li>22 вопроса с одним ответом, 8 — с несколькими</li>
+          <li>Тест адаптирован для дистанционных работников</li>
+        </ul>
+      </div>
+
+      <button class="btn btn-primary" onclick="startQuiz()">Начать тестирование →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: QUIZ -->
+<div id="screen-quiz" class="screen">
+  <div class="quiz-wrap">
+    <div class="progress-bar-wrap">
+      <div class="progress-text" id="progress-label">Вопрос 1 из 30</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:3.3%"></div>
+      </div>
+      <div class="progress-num" id="progress-num">1/30</div>
+    </div>
+    <div class="block-label" id="block-label"></div>
+    <div class="question-card">
+      <div id="q-type-badge" class="question-type-badge">Один правильный ответ</div>
+      <div class="question-text" id="q-text"></div>
+      <div class="answers" id="answers-list"></div>
+      <div class="check-wrap">
+        <button class="btn-check" id="btn-check" onclick="checkAnswer()" disabled>Проверить ответ</button>
+      </div>
+      <div class="explanation" id="explanation">
+        <div class="exp-title">Пояснение</div>
+        <div id="exp-text"></div>
+        <div class="law-ref" id="exp-law"></div>
+      </div>
+      <button class="btn-next" id="btn-next" onclick="nextQuestion()">Следующий вопрос →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: RESULT -->
+<div id="screen-result" class="screen">
+  <div class="result-wrap">
+
+    <div class="result-hero" id="result-hero">
+      <div class="result-status" id="res-status"></div>
+      <div class="ring-wrap">
+        <svg viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="65" fill="none" stroke="#1a2f45" stroke-width="14"/>
+          <circle id="ring-progress" cx="80" cy="80" r="65" fill="none" stroke="#27ae60" stroke-width="14"
+            stroke-dasharray="408.4" stroke-dashoffset="408.4"
+            stroke-linecap="round" transform="rotate(-90 80 80)" style="transition:stroke-dashoffset 1s ease"/>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-pct" id="ring-pct">0%</div>
+          <div class="ring-label">результат</div>
+        </div>
+      </div>
+      <div class="result-name" id="res-name"></div>
+      <div class="result-pos" id="res-pos"></div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num total" id="stat-total">30</div>
+        <div class="stat-lbl">Всего вопросов</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num correct" id="stat-correct">0</div>
+        <div class="stat-lbl">Правильно</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num wrong" id="stat-wrong">0</div>
+        <div class="stat-lbl">Ошибки</div>
+      </div>
+    </div>
+
+    <div id="cert-notice" class="cert-notice" style="display:none">
+      <span style="font-size:20px">✅</span>
+      <div>
+        <strong>Тест пройден.</strong> Ваши знания соответствуют требованиям программы совмещённого противопожарного инструктажа ООО «ТЕПЛОСИЛА». Результат подлежит регистрации в журнале учёта инструктажей.
+      </div>
+    </div>
+    <div id="fail-notice" class="disclaimer" style="display:none">
+      <div class="disclaimer-icon">❌</div>
+      <div>
+        <strong>Тест не пройден.</strong> Изучите пояснения к допущенным ошибкам ниже и повторите инструктаж. Для допуска к работе необходимо набрать не менее 70% (21 верный ответ).
+      </div>
+    </div>
+
+    <div class="errors-section" id="errors-section" style="display:none">
+      <h3>📋 Анализ ошибок и правильные ответы</h3>
+      <div id="errors-list"></div>
+    </div>
+
+    <div class="result-footer">
+      <strong>Нормативная база:</strong> Приказ МЧС России №1120 от 16.12.2024 «Об утверждении Порядка проведения противопожарного инструктажа» · Федеральный закон №69-ФЗ от 21.12.1994 «О пожарной безопасности» (ред. действующая) · Федеральный закон №123-ФЗ от 22.07.2008 «Технический регламент о требованиях пожарной безопасности» (ред. действующая) · Постановление Правительства РФ №1479 от 16.09.2020 «Правила противопожарного режима в Российской Федерации» (ред. действующая)<br><br>
+      <strong>Примечание:</strong> Данное тестирование является теоретической частью инструктажа. Практическая часть (работа с огнетушителем, отработка плана эвакуации) проводится работодателем или уполномоченным лицом отдельно.
+    </div>
+
+    <!-- JOURNAL BLOCK -->
+    <div class="journal-block" id="journal-block">
+      <div class="journal-title">📋 Сведения для записи в Журнал противопожарного инструктажа</div>
+      <div class="journal-subtitle">ООО «ТЕПЛОСИЛА» · Журнал учёта инструктажей по пожарной безопасности (форма согласно Приказу МЧС России №1120 от 16.12.2024)</div>
+      <table class="journal-table">
+        <tr>
+          <td class="jt-label">Дата проведения инструктажа</td>
+          <td class="jt-value" id="jt-date"></td>
+        </tr>
+        <tr>
+          <td class="jt-label">Вид инструктажа</td>
+          <td class="jt-value">Совмещённый вводный и первичный противопожарный инструктаж (дистанционная форма)</td>
+        </tr>
+        <tr>
+          <td class="jt-label">ФИО инструктируемого</td>
+          <td class="jt-value" id="jt-name"></td>
+        </tr>
+        <tr>
+          <td class="jt-label">Должность</td>
+          <td class="jt-value" id="jt-position"></td>
+        </tr>
+        <tr>
+          <td class="jt-label">Структурное подразделение</td>
+          <td class="jt-value">Сервисный отдел</td>
+        </tr>
+        <tr>
+          <td class="jt-label">Программа инструктажа</td>
+          <td class="jt-value">Программа совмещённого вводного и первичного противопожарного инструктажа для дистанционных работников сервисного отдела ООО «ТЕПЛОСИЛА»</td>
+        </tr>
+        <tr>
+          <td class="jt-label">Форма проведения</td>
+          <td class="jt-value">Дистанционная (с применением интерактивного тестирования)</td>
+        </tr>
+        <tr>
+          <td class="jt-label">Результат проверки знаний</td>
+          <td class="jt-value jt-result" id="jt-result"></td>
+        </tr>
+        <tr>
+          <td class="jt-label">Правильных ответов / Всего вопросов</td>
+          <td class="jt-value" id="jt-score"></td>
+        </tr>
+        <tr>
+          <td class="jt-label">Нормативная основа</td>
+          <td class="jt-value">Приказ МЧС России №1120 от 16.12.2024; ФЗ №69-ФЗ от 21.12.1994; ФЗ №123-ФЗ от 22.07.2008; ППР РФ №1479 от 16.09.2020</td>
+        </tr>
+        <tr>
+          <td class="jt-label">Подпись инструктируемого</td>
+          <td class="jt-value jt-sign"><span class="sign-line"></span></td>
+        </tr>
+        <tr>
+          <td class="jt-label">Подпись лица, проводившего инструктаж</td>
+          <td class="jt-value jt-sign"><span class="sign-line"></span></td>
+        </tr>
+        <tr>
+          <td class="jt-label">ФИО лица, проводившего инструктаж</td>
+          <td class="jt-value jt-sign"><span class="sign-line"></span></td>
+        </tr>
+      </table>
+      <div class="journal-note">
+        ⚠️ Примечание: теоретическая часть инструктажа пройдена в дистанционной форме. Практическая часть (демонстрация применения огнетушителя и порядка эвакуации) проводится непосредственным руководителем отдельно и фиксируется дополнительной записью в журнале.
+      </div>
+    </div>
+
+    <button class="btn-restart" onclick="restartQuiz()">🔄 Пройти тест заново</button>
+    <button class="btn-print" onclick="window.print()">🖨️ Распечатать для журнала</button>
+  </div>
+</div>
+
+<script>
+/* =============================================
+   ВОПРОСЫ — 30 штук, 7 блоков
+   type: 'single' | 'multi'
+   answers: [{id, text}]
+   correct: id или [id, id] для multi
+   ============================================= */
+const QUESTIONS_SOURCE = [
+
+  // ===== БЛОК 1: ОСНОВЫ ПОЖАРНОЙ БЕЗОПАСНОСТИ (Q1–Q5) =====
+  {
+    block: "Блок 1 · Основы пожарной безопасности",
+    type: "single",
+    text: "Какой нормативный документ устанавливает порядок проведения противопожарного инструктажа в организациях России?",
+    answers: [
+      {id:"A", text:"Федеральный закон №123-ФЗ «Технический регламент о требованиях пожарной безопасности»"},
+      {id:"B", text:"Приказ МЧС России №1120 от 16.12.2024 «Об утверждении Порядка проведения противопожарного инструктажа»"},
+      {id:"C", text:"Постановление Правительства РФ №1479 от 16.09.2020 «Правила противопожарного режима»"},
+      {id:"D", text:"Приказ Минтруда России №772н «Правила по охране труда»"}
+    ],
+    correct: "B",
+    explanation: "Порядок проведения противопожарного инструктажа регулируется Приказом МЧС России №1120 от 16.12.2024, который пришёл на смену утратившему силу Приказу №806.",
+    law: "Приказ МЧС России №1120 от 16.12.2024"
+  },
+
+  {
+    block: "Блок 1 · Основы пожарной безопасности",
+    type: "single",
+    text: "Какой вид противопожарного инструктажа проводится со всеми вновь принятыми работниками до начала самостоятельной работы?",
+    answers: [
+      {id:"A", text:"Первичный на рабочем месте"},
+      {id:"B", text:"Внеплановый"},
+      {id:"C", text:"Вводный"},
+      {id:"D", text:"Целевой"}
+    ],
+    correct: "C",
+    explanation: "Вводный противопожарный инструктаж проводится до начала трудовой деятельности со всеми без исключения вновь принятыми работниками. Именно поэтому данный тест является частью совмещённого вводного и первичного инструктажа.",
+    law: "Приказ МЧС России №1120 от 16.12.2024, п. 9"
+  },
+
+  {
+    block: "Блок 1 · Основы пожарной безопасности",
+    type: "multi",
+    text: "Дистанционный работник ООО «ТЕПЛОСИЛА» несёт обязанности по пожарной безопасности. Выберите ВСЕ верные утверждения:",
+    answers: [
+      {id:"A", text:"Дистанционный работник обязан соблюдать требования пожарной безопасности на своём рабочем месте, в том числе домашнем"},
+      {id:"B", text:"Дистанционный работник освобождён от прохождения противопожарного инструктажа, так как работает из дома"},
+      {id:"C", text:"Работодатель вправе включить требования пожарной безопасности в трудовой договор с дистанционным работником"},
+      {id:"D", text:"Дистанционный работник обязан немедленно сообщить работодателю о пожаре или угрозе пожара"}
+    ],
+    correct: ["A","C","D"],
+    explanation: "Дистанционный работник несёт те же обязанности по пожарной безопасности, что и офисный. Освобождения от инструктажа нет. Работодатель вправе включать требования ПБ в трудовой договор (ст. 312.2 ТК РФ).",
+    law: "ФЗ №69-ФЗ ст.34; ТК РФ ст.312.2; Приказ МЧС №1120 от 16.12.2024"
+  },
+
+  {
+    block: "Блок 1 · Основы пожарной безопасности",
+    type: "single",
+    text: "Как классифицируется пожар, при котором горят бытовые электроприборы, ноутбук или зарядное устройство?",
+    answers: [
+      {id:"A", text:"Класс А — горение твёрдых веществ"},
+      {id:"B", text:"Класс В — горение жидкостей"},
+      {id:"C", text:"Класс Е — горение электроустановок, находящихся под напряжением"},
+      {id:"D", text:"Класс D — горение металлов"}
+    ],
+    correct: "C",
+    explanation: "Класс Е — это пожары, связанные с горением электроустановок, находящихся под напряжением (ноутбуки, зарядные устройства, удлинители, сетевые фильтры). Тушить такие пожары водой и пенными огнетушителями ЗАПРЕЩЕНО.",
+    law: "ФЗ №123-ФЗ ст. 8; ГОСТ 27331-87"
+  },
+
+  {
+    block: "Блок 1 · Основы пожарной безопасности",
+    type: "single",
+    text: "Первичный противопожарный инструктаж для дистанционного работника ООО «ТЕПЛОСИЛА» проводится:",
+    answers: [
+      {id:"A", text:"Только при личной явке работника в офис"},
+      {id:"B", text:"Только по телефону"},
+      {id:"C", text:"Дистанционно — по видеосвязи, через систему дистанционного обучения или путём изучения материалов инструктажа с подписанием документов об ознакомлении"},
+      {id:"D", text:"Не проводится — дистанционные работники освобождены от первичного инструктажа"}
+    ],
+    correct: "C",
+    explanation: "Приказ МЧС №1120 от 16.12.2024 допускает проведение инструктажа для дистанционных работников с применением электронного обучения и дистанционных образовательных технологий, в том числе через видеосвязь и СДО.",
+    law: "Приказ МЧС России №1120 от 16.12.2024, п. 6"
+  },
+
+  // ===== БЛОК 2: РАБОЧЕЕ МЕСТО ДИСТАНЦИОННОГО РАБОТНИКА (Q6–Q10) =====
+  {
+    block: "Блок 2 · Дистанционное рабочее место",
+    type: "multi",
+    text: "Вы работаете из домашнего офиса. Какие из перечисленных действий НАРУШАЮТ требования пожарной безопасности? Выберите ВСЕ нарушения:",
+    answers: [
+      {id:"A", text:"Использование тройника без предохранительного устройства вместо сетевого фильтра с защитой от перегрузки"},
+      {id:"B", text:"Хранение документов в ящике стола рядом с ноутбуком"},
+      {id:"C", text:"Зарядка ноутбука через удлинитель с суммарной мощностью подключённых устройств 2,5 кВт при допустимой 2,2 кВт"},
+      {id:"D", text:"Использование сертифицированного сетевого фильтра с защитой от перегрузки"},
+      {id:"E", text:"Оставление зарядного устройства подключённым к розетке без ноутбука в течение суток"}
+    ],
+    correct: ["A","C","E"],
+    explanation: "Нарушения: использование тройника без защиты от перегрузки (риск КЗ); превышение допустимой нагрузки на удлинитель (перегрев); оставление зарядных устройств без присмотра на длительное время. Хранение бумаг и использование сертифицированного оборудования нарушением не являются.",
+    law: "ППР РФ №1479, п. 35, 42"
+  },
+
+  {
+    block: "Блок 2 · Дистанционное рабочее место",
+    type: "single",
+    text: "Вы заметили, что кабель зарядного устройства рабочего ноутбука оплавился в нескольких местах, но устройство пока работает. Ваши действия:",
+    answers: [
+      {id:"A", text:"Продолжить работу — раз работает, значит, всё нормально"},
+      {id:"B", text:"Обмотать повреждённые места изолентой и продолжить использование"},
+      {id:"C", text:"Немедленно отключить устройство от сети, сообщить руководителю и не использовать до замены кабеля"},
+      {id:"D", text:"Сообщить руководителю в конце рабочего дня и продолжить работу"}
+    ],
+    correct: "C",
+    explanation: "Повреждённая изоляция кабеля — прямая причина короткого замыкания и пожара. Оплавление означает, что кабель уже перегревался. Необходимо немедленно обесточить и заменить. Самостоятельная изолента-заклейка — недопустима: это не восстанавливает изоляцию.",
+    law: "ППР РФ №1479, п. 35"
+  },
+
+  {
+    block: "Блок 2 · Дистанционное рабочее место",
+    type: "single",
+    text: "Как правильно выбрать удлинитель для домашнего офиса дистанционного работника?",
+    answers: [
+      {id:"A", text:"Любой удлинитель — главное, чтобы хватало розеток"},
+      {id:"B", text:"Удлинитель с заземлением, автоматическим выключателем защиты от перегрузки, рассчитанный на суммарную мощность подключаемых устройств с 20% запасом"},
+      {id:"C", text:"Удлинитель без заземления — дешевле и вполне достаточно"},
+      {id:"D", text:"Самодельный удлинитель, собранный из имеющихся проводов"}
+    ],
+    correct: "B",
+    explanation: "Удлинитель должен иметь заземление (для современной техники), защиту от перегрузки (автомат или предохранитель) и быть рассчитан на мощность всех подключаемых устройств с запасом минимум 20%. Самодельные удлинители запрещены.",
+    law: "ППР РФ №1479, п. 35; ГОСТ IEC 61558"
+  },
+
+  {
+    block: "Блок 2 · Дистанционное рабочее место",
+    type: "single",
+    text: "Ваш рабочий ноутбук сильно нагревается при работе, вентиляционные отверстия горячие. Какое место для работы НАИБОЛЕЕ БЕЗОПАСНО?",
+    answers: [
+      {id:"A", text:"Мягкое кресло или диван — удобно и привычно"},
+      {id:"B", text:"Постельное бельё — мягко и комфортно"},
+      {id:"C", text:"Твёрдая ровная поверхность стола, обеспечивающая свободный доступ воздуха к вентиляционным отверстиям"},
+      {id:"D", text:"Подушка на коленях — так удобнее работать лёжа"}
+    ],
+    correct: "C",
+    explanation: "Ноутбук охлаждается через вентиляционные отверстия (обычно снизу и сбоку). Мягкие поверхности (диван, кровать, подушка) перекрывают вентиляцию, что ведёт к перегреву процессора и аккумулятора — потенциальная причина возгорания. Только твёрдый стол!",
+    law: "ППР РФ №1479, п. 42; рекомендации производителей оборудования"
+  },
+
+  {
+    block: "Блок 2 · Дистанционное рабочее место",
+    type: "multi",
+    text: "Вы уходите из домашнего офиса на весь рабочий день. Что ОБЯЗАТЕЛЬНО нужно сделать перед уходом? Выберите ВСЕ правильные действия:",
+    answers: [
+      {id:"A", text:"Отключить зарядные устройства от розеток"},
+      {id:"B", text:"Убедиться, что не оставлены включёнными электроприборы без необходимости"},
+      {id:"C", text:"Закрыть все запущенные программы на ноутбуке и перевести его в спящий режим или выключить"},
+      {id:"D", text:"Можно оставить всё включённым — электроника современная и безопасная"},
+      {id:"E", text:"Убедиться, что нет брошенных открытых источников огня (свечи, аромалампы)"}
+    ],
+    correct: ["A","B","C","E"],
+    explanation: "Перед длительным уходом необходимо: отключить зарядные устройства, обесточить ненужные приборы, выключить или перевести в спящий режим ноутбук, проверить отсутствие открытого огня. «Безопасность» современной электроники не отменяет риск КЗ при длительной работе без присмотра.",
+    law: "ППР РФ №1479, п. 35, 42, 43"
+  },
+
+  // ===== БЛОК 3: ЭЛЕКТРОБЕЗОПАСНОСТЬ И ОРГТЕХНИКА (Q11–Q14) =====
+  {
+    block: "Блок 3 · Электробезопасность и оргтехника",
+    type: "single",
+    text: "Произошло возгорание аккумулятора ноутбука. Вы видите дым, вздутие, слышите треск. Как действовать ПРАВИЛЬНО?",
+    answers: [
+      {id:"A", text:"Немедленно залить водой — самый быстрый способ"},
+      {id:"B", text:"Обесточить ноутбук (вынуть кабель), вынести или вынести из помещения, вызвать пожарных, не оставлять без контроля"},
+      {id:"C", text:"Продолжить работу, открыв окно для проветривания"},
+      {id:"D", text:"Накрыть влажной тканью и нажать кнопку питания"}
+    ],
+    correct: "B",
+    explanation: "Горящий литий-ионный аккумулятор нельзя тушить водой (реакция с выделением водорода) и пенными огнетушителями. Действия: немедленно обесточить, по возможности вынести из помещения на негорючую поверхность, вызвать 101. Углекислотный огнетушитель допустим.",
+    law: "ФЗ №123-ФЗ; ФЗ №69-ФЗ ст. 34"
+  },
+
+  {
+    block: "Блок 3 · Электробезопасность и оргтехника",
+    type: "single",
+    text: "Какой тип огнетушителя НЕЛЬЗЯ использовать для тушения горящего офисного оборудования (ноутбука, принтера), находящегося под напряжением?",
+    answers: [
+      {id:"A", text:"Углекислотный (ОУ)"},
+      {id:"B", text:"Порошковый (ОП)"},
+      {id:"C", text:"Водный или воздушно-пенный (ОВ, ОВП)"},
+      {id:"D", text:"Хладоновый"}
+    ],
+    correct: "C",
+    explanation: "Водные и воздушно-пенные огнетушители ЗАПРЕЩЕНЫ для тушения электроустановок под напряжением — вода проводит ток, что опасно для жизни. Для электрооборудования используют углекислотные (ОУ) или порошковые (ОП) огнетушители.",
+    law: "ФЗ №123-ФЗ; ППР РФ №1479, п. 73"
+  },
+
+  {
+    block: "Блок 3 · Электробезопасность и оргтехника",
+    type: "single",
+    text: "Что такое «короткое замыкание» и почему оно опасно?",
+    answers: [
+      {id:"A", text:"Резкое увеличение напряжения в сети — опасно для электроники"},
+      {id:"B", text:"Соединение двух проводников с разными потенциалами, вызывающее резкий рост тока, перегрев, искрообразование и возгорание проводки"},
+      {id:"C", text:"Выход из строя предохранителя — опасно потерей данных"},
+      {id:"D", text:"Временное отключение электричества в здании"}
+    ],
+    correct: "B",
+    explanation: "Короткое замыкание — соединение проводников, при котором ток резко возрастает (в сотни раз), кабели перегреваются за секунды до температуры воспламенения изоляции. Основные причины дома: повреждённая изоляция, самодельные удлинители, перегрузка сети.",
+    law: "ФЗ №123-ФЗ; ПУЭ (Правила устройства электроустановок)"
+  },
+
+  {
+    block: "Блок 3 · Электробезопасность и оргтехника",
+    type: "multi",
+    text: "Какие признаки указывают на опасную неисправность электропроводки или оборудования? Выберите ВСЕ верные признаки:",
+    answers: [
+      {id:"A", text:"Запах горелой пластмассы или горячей резины"},
+      {id:"B", text:"Потемнение или почернение розетки, вилки или корпуса прибора"},
+      {id:"C", text:"Мерцание лампочки при включении прибора"},
+      {id:"D", text:"Искрение при подключении к розетке"},
+      {id:"E", text:"Нагрев кабеля или удлинителя во время работы"}
+    ],
+    correct: ["A","B","D","E"],
+    explanation: "Запах горелого, почернение, искрение и нагрев кабелей — прямые признаки перегрузки или КЗ. Мерцание лампочки при включении прибора — возможный признак просадки напряжения (перегрузка), но может быть нормой. Первые четыре признака — однозначная опасность.",
+    law: "ППР РФ №1479, п. 35"
+  },
+
+  // ===== БЛОК 4: СИСТЕМЫ ОБНАРУЖЕНИЯ И ОПОВЕЩЕНИЯ (Q15–Q18) =====
+  {
+    block: "Блок 4 · Системы обнаружения и оповещения",
+    type: "single",
+    text: "Сработал пожарный извещатель (дымовой датчик) у вас дома. Видимых признаков задымления нет. Как правильно поступить?",
+    answers: [
+      {id:"A", text:"Снять батарейку из датчика — наверное, просто разрядилась"},
+      {id:"B", text:"Игнорировать — скорее всего, ложное срабатывание"},
+      {id:"C", text:"Немедленно осмотреть все комнаты, проверить розетки, кухню, электроприборы; при обнаружении источника — действовать по плану эвакуации; при невозможности установить причину — вызвать пожарных"},
+      {id:"D", text:"Открыть окно и подождать 10 минут"}
+    ],
+    correct: "C",
+    explanation: "Любое срабатывание датчика — потенциальная угроза. Дым от тлеющей проводки за стеной может быть невидим. Алгоритм: осмотр помещений → проверка источников → при сомнении вызов 101. Снятие батарейки лишает вас защиты.",
+    law: "ФЗ №69-ФЗ ст. 34; ФЗ №123-ФЗ"
+  },
+
+  {
+    block: "Блок 4 · Системы обнаружения и оповещения",
+    type: "single",
+    text: "Где рекомендуется устанавливать автономный дымовой пожарный извещатель в домашнем офисе?",
+    answers: [
+      {id:"A", text:"На полу, в углу комнаты"},
+      {id:"B", text:"На потолке или высокой стене (не ниже 30 см от потолка), в зоне наиболее вероятного образования дыма"},
+      {id:"C", text:"Рядом с кондиционером или вентиляционным отверстием"},
+      {id:"D", text:"На рабочем столе рядом с ноутбуком"}
+    ],
+    correct: "B",
+    explanation: "Дым поднимается вверх, поэтому датчики монтируются на потолке или высокой стене. Установка рядом с вентиляцией или кондиционером нежелательна — поток воздуха уносит дым и увеличивает время обнаружения.",
+    law: "СП 484.1311500.2020; ГОСТ Р 53325-2012"
+  },
+
+  {
+    block: "Блок 4 · Системы обнаружения и оповещения",
+    type: "single",
+    text: "Вы находитесь в офисе клиента. Зазвучал сигнал пожарной тревоги. Ваши первые действия:",
+    answers: [
+      {id:"A", text:"Закончить переговоры и дойти до конца совещания"},
+      {id:"B", text:"Подождать подтверждения от сотрудников клиента"},
+      {id:"C", text:"Немедленно прекратить работу, взять только ключи/документы, следовать за сотрудниками к ближайшему аварийному выходу, не пользоваться лифтом"},
+      {id:"D", text:"Спуститься на лифте — быстрее и удобнее"}
+    ],
+    correct: "C",
+    explanation: "При звуке пожарной тревоги — немедленная эвакуация. Время реакции критично. Лифт при пожаре ЗАПРЕЩЁН — может застрять при отключении электричества. Ждать «подтверждения» нельзя — каждая секунда на счету.",
+    law: "ФЗ №69-ФЗ ст. 34; ППР РФ №1479, п. 72"
+  },
+
+  {
+    block: "Блок 4 · Системы обнаружения и оповещения",
+    type: "single",
+    text: "Какой номер нужно набрать для вызова пожарной охраны с мобильного телефона в России?",
+    answers: [
+      {id:"A", text:"112 или 101"},
+      {id:"B", text:"только 112"},
+      {id:"C", text:"только 01"},
+      {id:"D", text:"102"}
+    ],
+    correct: "A",
+    explanation: "С мобильного телефона: 101 (прямой вызов пожарной охраны) или 112 (единая служба спасения, которая перенаправит вызов). Оба номера работают бесплатно, в том числе при отсутствии баланса на счёте.",
+    law: "ФЗ №69-ФЗ; Постановление Правительства РФ №953 от 31.12.2004"
+  },
+
+  // ===== БЛОК 5: ЭВАКУАЦИЯ (Q19–Q22) =====
+  {
+    block: "Блок 5 · Порядок эвакуации",
+    type: "single",
+    text: "Вы обнаружили пожар в офисе, где находитесь. Правильная последовательность первых действий:",
+    answers: [
+      {id:"A", text:"1) Потушить самостоятельно → 2) Сообщить руководителю → 3) Вызвать пожарных"},
+      {id:"B", text:"1) Сообщить в пожарную охрану (101/112) → 2) Активировать ручной пожарный извещатель → 3) Эвакуироваться, закрывая двери → 4) Встретить пожарных"},
+      {id:"C", text:"1) Собрать вещи → 2) Сообщить коллегам → 3) Выйти через лифт"},
+      {id:"D", text:"1) Сфотографировать для страховки → 2) Вызвать пожарных → 3) Эвакуироваться"}
+    ],
+    correct: "B",
+    explanation: "Правильный алгоритм: 1) немедленно вызвать 101/112; 2) активировать ручной пожарный извещатель; 3) организовать эвакуацию людей, закрывая двери (это замедляет распространение огня и дыма); 4) встретить пожарных и сообщить обстановку. Тушить самостоятельно можно только при уверенности в успехе и отсутствии угрозы жизни.",
+    law: "ФЗ №69-ФЗ ст. 34; ППР РФ №1479, п. 72–76"
+  },
+
+  {
+    block: "Блок 5 · Порядок эвакуации",
+    type: "single",
+    text: "Почему при эвакуации из задымлённого помещения нужно передвигаться пригнувшись к полу?",
+    answers: [
+      {id:"A", text:"Чтобы быстрее перемещаться"},
+      {id:"B", text:"Внизу ниже температура и выше концентрация кислорода, так как дым и продукты горения поднимаются вверх"},
+      {id:"C", text:"Так требует инструкция, хотя разницы нет"},
+      {id:"D", text:"Чтобы не задеть пожарное оборудование на стенах"}
+    ],
+    correct: "B",
+    explanation: "Дым, угарный газ (CO) и горячие продукты горения накапливаются у потолка. У пола температура значительно ниже, а концентрация кислорода выше. Передвижение в 30–50 см от пола существенно увеличивает шансы на выживание при задымлении.",
+    law: "ФЗ №69-ФЗ; методические рекомендации МЧС России"
+  },
+
+  {
+    block: "Блок 5 · Порядок эвакуации",
+    type: "multi",
+    text: "Какие действия при эвакуации ЗАПРЕЩЕНЫ? Выберите ВСЕ запрещённые действия:",
+    answers: [
+      {id:"A", text:"Пользоваться лифтом"},
+      {id:"B", text:"Возвращаться в горящее здание за вещами или документами"},
+      {id:"C", text:"Открывать двери в задымлённом помещении, не проверив их температуру тыльной стороной ладони"},
+      {id:"D", text:"Закрывать двери при выходе из помещения"},
+      {id:"E", text:"Прыгать из окон выше второго этажа без специального снаряжения"}
+    ],
+    correct: ["A","B","C","E"],
+    explanation: "ЗАПРЕЩЕНО: лифт (риск застревания), возврат за вещами (потеря времени), открывать горячие двери без проверки (приток воздуха усиливает горение), прыгать с высоты. ПРАВИЛЬНО: закрывать двери при выходе — это замедляет распространение огня.",
+    law: "ФЗ №69-ФЗ ст. 34; ППР РФ №1479, п. 72"
+  },
+
+  {
+    block: "Блок 5 · Порядок эвакуации",
+    type: "single",
+    text: "Вы находитесь в гостинице в командировке. Как правильно подготовиться к возможной эвакуации при заселении?",
+    answers: [
+      {id:"A", text:"Не нужно ничего делать — персонал гостиницы обо всём позаботится"},
+      {id:"B", text:"Запомнить расположение ближайших аварийных выходов и лестниц на своём этаже, изучить план эвакуации на двери номера, убедиться, что дверь закрывается изнутри"},
+      {id:"C", text:"Держать телефон заряженным — этого достаточно"},
+      {id:"D", text:"Выбрать номер на первом этаже — тогда эвакуация будет проще"}
+    ],
+    correct: "B",
+    explanation: "При заселении в гостиницу необходимо: изучить план эвакуации на двери номера, найти два ближайших аварийных выхода (основной и запасной), запомнить количество дверей до ближайшей лестницы (пригодится при эвакуации в дыму). Это занимает 2 минуты и может спасти жизнь.",
+    law: "ФЗ №69-ФЗ ст. 34; рекомендации МЧС России"
+  },
+
+  // ===== БЛОК 6: ОГНЕТУШИТЕЛИ (Q23–Q26) =====
+  {
+    block: "Блок 6 · Огнетушители",
+    type: "single",
+    text: "Вы видите огнетушитель в офисе. Каков стандартный порядок приведения порошкового огнетушителя (ОП) в действие?",
+    answers: [
+      {id:"A", text:"Повернуть рукоятку, нажать кнопку, направить на пламя"},
+      {id:"B", text:"Сорвать пломбу и выдернуть чеку, направить сопло на основание пламени, нажать рукоятку"},
+      {id:"C", text:"Перевернуть огнетушитель, встряхнуть, нажать кнопку"},
+      {id:"D", text:"Открутить крышку, налить воду, применить"}
+    ],
+    correct: "B",
+    explanation: "Алгоритм PASS: Pull — выдернуть чеку (сорвать пломбу); Aim — направить сопло на основание пламени; Squeeze — нажать рычаг; Sweep — направлять струю из стороны в сторону по основанию огня. Расстояние до огня — 2–3 метра для ОП.",
+    law: "ППР РФ №1479, п. 78; ГОСТ Р 51057-2001"
+  },
+
+  {
+    block: "Блок 6 · Огнетушители",
+    type: "single",
+    text: "Какой огнетушитель ОПТИМАЛЕН для размещения в домашнем офисе дистанционного работника, где есть компьютерная техника?",
+    answers: [
+      {id:"A", text:"Водный (ОВ-5) — самый доступный и простой"},
+      {id:"B", text:"Воздушно-пенный (ОВП-5) — хорошо тушит любые материалы"},
+      {id:"C", text:"Углекислотный (ОУ-2 или ОУ-5) — безопасен для электроники, не оставляет остатков"},
+      {id:"D", text:"Огнетушитель не нужен — дома пожар вряд ли случится"}
+    ],
+    correct: "C",
+    explanation: "Углекислотный огнетушитель (ОУ) идеален для помещений с электроникой: не проводит ток, не повреждает оборудование, не оставляет следов. Для домашнего офиса достаточно ОУ-2 или ОУ-5. Водные и пенные — ЗАПРЕЩЕНЫ для тушения оборудования под напряжением.",
+    law: "ФЗ №123-ФЗ; ППР РФ №1479, п. 73"
+  },
+
+  {
+    block: "Блок 6 · Огнетушители",
+    type: "single",
+    text: "Какой срок перезарядки установлен для углекислотного огнетушителя (ОУ) при отсутствии его применения?",
+    answers: [
+      {id:"A", text:"Каждый год"},
+      {id:"B", text:"Каждые 5 лет"},
+      {id:"C", text:"Только после использования"},
+      {id:"D", text:"Каждые 10 лет"}
+    ],
+    correct: "B",
+    explanation: "Углекислотные огнетушители проходят техническое обслуживание (проверка) ежегодно, а полную перезарядку — каждые 5 лет независимо от того, использовался ли огнетушитель. Порошковые огнетушители (ОП) перезаряжаются каждые 5 лет, но проверка порошка — раз в 2 года.",
+    law: "ППР РФ №1479, п. 62; ГОСТ Р 51057-2001"
+  },
+
+  {
+    block: "Блок 6 · Огнетушители",
+    type: "multi",
+    text: "По каким признакам можно определить, что огнетушитель НЕПРИГОДЕН к использованию? Выберите ВСЕ верные признаки:",
+    answers: [
+      {id:"A", text:"Сорвана или отсутствует пломба"},
+      {id:"B", text:"Стрелка манометра в красной зоне или на нуле"},
+      {id:"C", text:"Огнетушитель хранится в вертикальном положении"},
+      {id:"D", text:"На корпусе видны вмятины, трещины, следы коррозии"},
+      {id:"E", text:"Истёк срок очередного технического обслуживания (дата на бирке)"}
+    ],
+    correct: ["A","B","D","E"],
+    explanation: "Непригоден: нет пломбы (мог быть использован), манометр в красной зоне или на нуле (нет давления), повреждён корпус (риск разрыва), просрочено ТО. Вертикальное хранение — норма для большинства огнетушителей.",
+    law: "ППР РФ №1479, п. 60–64; ГОСТ Р 51057-2001"
+  },
+
+  // ===== БЛОК 7: РАБОТА НА ОБЪЕКТЕ, В ОФИСЕ КЛИЕНТА, В КОМАНДИРОВКЕ (Q27–Q30) =====
+  {
+    block: "Блок 7 · Объект клиента, офис, командировка",
+    type: "single",
+    text: "Вы приехали на объект клиента для проведения технического обслуживания. Какие действия по пожарной безопасности необходимо выполнить ПЕРЕД началом работы?",
+    answers: [
+      {id:"A", text:"Ничего дополнительного — вы уже прошли инструктаж у своего работодателя"},
+      {id:"B", text:"Узнать расположение ближайшего аварийного выхода, пожарного щита и огнетушителей; пройти целевой инструктаж у ответственного лица объекта (если работа относится к пожароопасным)"},
+      {id:"C", text:"Подписать акт приёмки и начать работу"},
+      {id:"D", text:"Уточнить только телефон охраны объекта"}
+    ],
+    correct: "B",
+    explanation: "На объекте клиента необходимо: выяснить расположение средств пожаротушения и аварийных выходов; если работа является огневой или пожароопасной — получить целевой инструктаж и наряд-допуск. Инструктаж у своего работодателя не отменяет необходимость ознакомления с объектом.",
+    law: "Приказ МЧС №1120 от 16.12.2024, п. 14; ППР РФ №1479, п. 369"
+  },
+
+  {
+    block: "Блок 7 · Объект клиента, офис, командировка",
+    type: "single",
+    text: "Вы работаете в коворкинге. Вы заметили задымление у соседнего стола. Ваши действия:",
+    answers: [
+      {id:"A", text:"Снять видео для социальных сетей, потом сообщить"},
+      {id:"B", text:"Подойти и посмотреть, что горит, потом решить, вызывать ли пожарных"},
+      {id:"C", text:"Немедленно сообщить персоналу коворкинга и/или позвонить 101/112, по возможности предупредить окружающих и начать эвакуацию"},
+      {id:"D", text:"Это не ваша ответственность — уйти и ничего не делать"}
+    ],
+    correct: "C",
+    explanation: "Любой гражданин обязан при обнаружении пожара немедленно сообщить в пожарную охрану (ст. 34 ФЗ №69-ФЗ). Игнорирование — нарушение закона. Действия: уведомить персонал, вызвать 101/112, предупредить окружающих, начать эвакуацию.",
+    law: "ФЗ №69-ФЗ ст. 34, 38"
+  },
+
+  {
+    block: "Блок 7 · Объект клиента, офис, командировка",
+    type: "multi",
+    text: "Вы остановились в гостинице в командировке. Что из перечисленного ЗАПРЕЩЕНО по правилам пожарной безопасности? Выберите ВСЕ запрещённые действия:",
+    answers: [
+      {id:"A", text:"Курить в номере гостиницы, в том числе электронные сигареты (вейп)"},
+      {id:"B", text:"Использовать собственный кипятильник, электроплитку или другие нагревательные приборы, не предусмотренные гостиницей"},
+      {id:"C", text:"Заряжать телефон через USB-порт телевизора"},
+      {id:"D", text:"Подключать удлинитель к розетке номера для работы"},
+      {id:"E", text:"Оставлять зарядное устройство от телефона включённым в розетку на ночь"}
+    ],
+    correct: ["A","B","E"],
+    explanation: "ЗАПРЕЩЕНО в гостинице: курить в номере (включая вейп — создаёт пожарную нагрузку); использовать собственные нагревательные приборы (кипятильники, плитки); оставлять зарядные устройства без присмотра на ночь. Зарядка через TV и использование короткого удлинителя для работы — допустимо при соблюдении нагрузки.",
+    law: "ППР РФ №1479, п. 35, 85"
+  },
+
+  {
+    block: "Блок 7 · Объект клиента, офис, командировка",
+    type: "single",
+    text: "Вы получили ожог от горячей поверхности оборудования при выполнении работы на объекте клиента. Правильные действия по оказанию первой помощи:",
+    answers: [
+      {id:"A", text:"Немедленно намазать ожог маслом, сметаной или зубной пастой для охлаждения"},
+      {id:"B", text:"Охладить место ожога прохладной (не холодной) проточной водой 10–20 минут, наложить стерильную повязку, при необходимости вызвать скорую помощь"},
+      {id:"C", text:"Вскрыть пузыри, обработать йодом, наложить пластырь"},
+      {id:"D", text:"Приложить лёд на 30 минут"}
+    ],
+    correct: "B",
+    explanation: "При ожоге: 1) охладить прохладной (15–25°C) проточной водой 10–20 минут (не льдом — риск обморожения тканей); 2) не смазывать маслом/сметаной/пастой (создают плёнку, препятствующую охлаждению и осложняющую лечение); 3) не вскрывать пузыри; 4) стерильная повязка; 5) при ожоге 2+ степени или площади более 1% — вызвать скорую.",
+    law: "Приказ Минздрава России №220н от 03.05.2024; методические рекомендации по первой помощи"
+  }
+
+];
+
+/* ============================================
+   QUIZ STATE
+   ============================================ */
+let userName = "";
+let userPosition = "";
+let questions = [];
+let current = 0;
+let selectedIds = [];
+let answered = false;
+let results = []; // {qIndex, correct: bool, selectedIds, correctIds}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function prepareQuestions() {
+  questions = QUESTIONS_SOURCE.map(q => ({
+    ...q,
+    shuffledAnswers: shuffle(q.answers)
+  }));
+}
+
+/* ============================================
+   START
+   ============================================ */
+function startQuiz() {
+  const name = document.getElementById("inp-name").value.trim();
+  const patronymic = document.getElementById("inp-patronymic").value.trim();
+  const position = document.getElementById("inp-position").value.trim();
+
+  if (!name) { alert("Пожалуйста, введите Фамилию и Имя"); return; }
+  if (!position) { alert("Пожалуйста, введите должность"); return; }
+
+  userName = patronymic ? `${name} ${patronymic}` : name;
+  userPosition = position;
+  current = 0;
+  results = [];
+  selectedIds = [];
+  answered = false;
+
+  prepareQuestions();
+
+  document.getElementById("screen-form").classList.remove("active");
+  document.getElementById("screen-quiz").classList.add("active");
+  renderQuestion();
+}
+
+/* ============================================
+   RENDER QUESTION
+   ============================================ */
+function renderQuestion() {
+  const q = questions[current];
+  selectedIds = [];
+  answered = false;
+
+  // Progress
+  const pct = Math.round((current / 30) * 100);
+  document.getElementById("progress-fill").style.width = Math.max(pct, 3) + "%";
+  document.getElementById("progress-label").textContent = `Вопрос ${current + 1} из 30`;
+  document.getElementById("progress-num").textContent = `${current + 1}/30`;
+
+  // Block
+  document.getElementById("block-label").textContent = q.block;
+
+  // Type badge
+  const badge = document.getElementById("q-type-badge");
+  if (q.type === "multi") {
+    badge.textContent = "⬜ Несколько правильных ответов";
+    badge.className = "question-type-badge multi";
+  } else {
+    badge.textContent = "○ Один правильный ответ";
+    badge.className = "question-type-badge";
+  }
+
+  document.getElementById("q-text").textContent = q.text;
+
+  // Answers
+  const list = document.getElementById("answers-list");
+  list.innerHTML = "";
+  q.shuffledAnswers.forEach(ans => {
+    const btn = document.createElement("button");
+    btn.className = "answer-btn" + (q.type === "multi" ? " multi-answer" : "");
+    btn.setAttribute("data-id", ans.id);
+    btn.innerHTML = `<span class="answer-mark"></span><span>${ans.text}</span>`;
+    btn.addEventListener("click", () => toggleAnswer(ans.id, btn));
+    list.appendChild(btn);
+  });
+
+  // Reset
+  document.getElementById("btn-check").disabled = true;
+  const expEl = document.getElementById("explanation");
+  expEl.className = "explanation";
+  document.getElementById("btn-next").style.display = "none";
+}
+
+/* ============================================
+   TOGGLE ANSWER
+   ============================================ */
+function toggleAnswer(id, btn) {
+  if (answered) return;
+  const q = questions[current];
+
+  if (q.type === "single") {
+    // Deselect all
+    document.querySelectorAll(".answer-btn").forEach(b => {
+      b.classList.remove("selected");
+      b.querySelector(".answer-mark").textContent = "";
+    });
+    selectedIds = [id];
+    btn.classList.add("selected");
+    btn.querySelector(".answer-mark").textContent = "✓";
+  } else {
+    const idx = selectedIds.indexOf(id);
+    if (idx > -1) {
+      selectedIds.splice(idx, 1);
+      btn.classList.remove("selected");
+      btn.querySelector(".answer-mark").textContent = "";
+    } else {
+      selectedIds.push(id);
+      btn.classList.add("selected");
+      btn.querySelector(".answer-mark").textContent = "✓";
+    }
+  }
+
+  document.getElementById("btn-check").disabled = selectedIds.length === 0;
+}
+
+/* ============================================
+   CHECK ANSWER
+   ============================================ */
+function checkAnswer() {
+  if (answered || selectedIds.length === 0) return;
+  answered = true;
+
+  const q = questions[current];
+  const correctIds = Array.isArray(q.correct) ? q.correct : [q.correct];
+  const isCorrect = arraysEqual(selectedIds.slice().sort(), correctIds.slice().sort());
+
+  // Record result
+  results.push({
+    qIndex: current,
+    correct: isCorrect,
+    selectedIds: [...selectedIds],
+    correctIds: [...correctIds]
+  });
+
+  // Color answers
+  document.querySelectorAll(".answer-btn").forEach(btn => {
+    const id = btn.getAttribute("data-id");
+    btn.disabled = true;
+    if (correctIds.includes(id)) {
+      btn.classList.add("correct");
+      btn.querySelector(".answer-mark").textContent = "✓";
+    } else if (selectedIds.includes(id) && !correctIds.includes(id)) {
+      btn.classList.add("wrong");
+      btn.querySelector(".answer-mark").textContent = "✗";
+    }
+  });
+
+  // Show explanation
+  document.getElementById("exp-text").textContent = q.explanation;
+  document.getElementById("exp-law").textContent = "Нормативная основа: " + q.law;
+  const expEl = document.getElementById("explanation");
+  expEl.classList.add("show");
+
+  // Check button
+  document.getElementById("btn-check").disabled = true;
+  document.getElementById("btn-check").textContent = isCorrect ? "✅ Верно!" : "❌ Ошибка";
+  document.getElementById("btn-check").style.background = isCorrect
+    ? "linear-gradient(135deg, #1a6a30, #145a25)"
+    : "linear-gradient(135deg, #7a1a1a, #5a1010)";
+
+  // Next button
+  const btnNext = document.getElementById("btn-next");
+  btnNext.style.display = "block";
+  btnNext.textContent = current < 29 ? "Следующий вопрос →" : "Посмотреть результат →";
+}
+
+function arraysEqual(a, b) {
+  if (a.length !== b.length) return false;
+  return a.every((v, i) => v === b[i]);
+}
+
+/* ============================================
+   NEXT QUESTION
+   ============================================ */
+function nextQuestion() {
+  current++;
+  if (current >= 30) {
+    showResult();
+  } else {
+    // Reset check button
+    const btnCheck = document.getElementById("btn-check");
+    btnCheck.textContent = "Проверить ответ";
+    btnCheck.style.background = "";
+    renderQuestion();
+  }
+}
+
+/* ============================================
+   RESULT
+   ============================================ */
+function showResult() {
+  document.getElementById("screen-quiz").classList.remove("active");
+  document.getElementById("screen-result").classList.add("active");
+
+  const correctCount = results.filter(r => r.correct).length;
+  const wrongCount = 30 - correctCount;
+  const pct = Math.round((correctCount / 30) * 100);
+  const passed = pct >= 70;
+
+  // Ring animation
+  setTimeout(() => {
+    const circumference = 2 * Math.PI * 65; // ~408.4
+    const offset = circumference - (circumference * pct / 100);
+    const ring = document.getElementById("ring-progress");
+    ring.style.strokeDashoffset = offset;
+    ring.style.stroke = passed ? "#27ae60" : "#c0392b";
+  }, 100);
+
+  document.getElementById("ring-pct").textContent = pct + "%";
+  document.getElementById("res-name").textContent = userName;
+  document.getElementById("res-pos").textContent = userPosition;
+
+  const hero = document.getElementById("result-hero");
+  const status = document.getElementById("res-status");
+  if (passed) {
+    hero.classList.add("pass");
+    status.textContent = "✅ Тест пройден";
+    status.className = "result-status pass";
+    document.getElementById("cert-notice").style.display = "flex";
+    document.getElementById("fail-notice").style.display = "none";
+  } else {
+    hero.classList.add("fail");
+    status.textContent = "❌ Тест не пройден";
+    status.className = "result-status fail";
+    document.getElementById("cert-notice").style.display = "none";
+    document.getElementById("fail-notice").style.display = "flex";
+  }
+
+  document.getElementById("stat-correct").textContent = correctCount;
+  document.getElementById("stat-wrong").textContent = wrongCount;
+
+  // Fill journal block
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("ru-RU", {
+    day: "2-digit", month: "2-digit", year: "numeric"
+  });
+  document.getElementById("jt-date").textContent = dateStr;
+  document.getElementById("jt-name").textContent = userName;
+  document.getElementById("jt-position").textContent = userPosition;
+  const jtResult = document.getElementById("jt-result");
+  jtResult.textContent = passed
+    ? `ПРОШЁЛ(А) — ${pct}% (${correctCount} из 30 верных ответов)`
+    : `НЕ ПРОШЁЛ(А) — ${pct}% (${correctCount} из 30 верных ответов, требуется повторный инструктаж)`;
+  jtResult.className = "jt-value jt-result " + (passed ? "pass" : "fail");
+  document.getElementById("jt-score").textContent = `${correctCount} / 30 (${pct}%)`;
+
+  // Errors section
+  const errors = results.filter(r => !r.correct);
+  if (errors.length > 0) {
+    document.getElementById("errors-section").style.display = "block";
+    const errList = document.getElementById("errors-list");
+    errList.innerHTML = "";
+    errors.forEach(err => {
+      const q = questions[err.qIndex];
+      const yourTexts = err.selectedIds.map(id => q.answers.find(a => a.id === id)?.text || id).join("; ");
+      const correctTexts = err.correctIds.map(id => q.answers.find(a => a.id === id)?.text || id).join("; ");
+      const div = document.createElement("div");
+      div.className = "error-item";
+      div.innerHTML = `
+        <div class="error-q">❓ ${q.text}</div>
+        <div class="error-your">✗ Ваш ответ: ${yourTexts}</div>
+        <div class="error-right">✓ Правильно: ${correctTexts}</div>
+        <div class="error-exp">${q.explanation}</div>
+        <div class="error-law">${q.law}</div>
+      `;
+      errList.appendChild(div);
+    });
+  }
+
+  window.scrollTo(0, 0);
+}
+
+/* ============================================
+   RESTART
+   ============================================ */
+function restartQuiz() {
+  document.getElementById("screen-result").classList.remove("active");
+  document.getElementById("result-hero").className = "result-hero";
+  document.getElementById("errors-section").style.display = "none";
+  document.getElementById("errors-list").innerHTML = "";
+  document.getElementById("ring-progress").style.strokeDashoffset = "408.4";
+  document.getElementById("btn-check").textContent = "Проверить ответ";
+  document.getElementById("btn-check").style.background = "";
+  // Clear journal
+  document.getElementById("jt-date").textContent = "";
+  document.getElementById("jt-name").textContent = "";
+  document.getElementById("jt-position").textContent = "";
+  document.getElementById("jt-result").textContent = "";
+  document.getElementById("jt-score").textContent = "";
+  document.getElementById("screen-form").classList.add("active");
+}
+</script>
+</body>
+</html>
